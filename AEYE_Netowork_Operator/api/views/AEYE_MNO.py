@@ -52,19 +52,14 @@ class aeye_mno_Viewsets(viewsets.ModelViewSet):
 
                     return response_server
                 else:
-                    message="Failed to receive response from: {}{}".format(server_url, save_log_url)
+                    message="Failed to receive response from: {}{}".format(server_url, mw_save_log)
                     data={
                         'whoami' : i_am_api_ano,
                         'message': message
                     }
                     return Response(data, status=status.HTTP_400_BAD_REQUEST)
             else:
-                message="Failed to receive response from: {}{}".format(server_url, print_log_url)
-                data={
-                    'whoami' : i_am_api_ano,
-                    'message': message
-                }
-                return Response(data, status=status.HTTP_400_BAD_REQUEST)
+                pass
         else:
             message="Received Invalid data : ".format(serializer.errors)
             data={
@@ -129,7 +124,7 @@ def aeye_save_log(message_client : str, name_client : str)->Response:
 
         return response_save_log
     else:
-        message="Failed to Received Data from : {}{}".fromat(server_url, save_log_url)
+        message="Failed to Received Data from : {}{}".fromat(server_url, mw_save_log)
         data={
             'whoami' : i_am_api_ano,
             'message': message

@@ -41,11 +41,12 @@ class aeye_print_log_Viewsets(viewsets.ModelViewSet):
             message_client     = serializer.validated_data.get('message')
             cllient_name_raw   = serializer.validated_data.get('cllient_name_raw')
             client_message_raw = serializer.validated_data.get('client_message_raw')
+            client_status_raw  = serializer.validated_data.get('client_status_raw')
 
             if settings.DEBUG:
                 print_log('active', i_am_client, i_am_mw_pl, "Received Data Successfully!")
 
-            response_server = request_print_log(cllient_name_raw, client_message_raw)
+            response_server = request_print_log(cllient_name_raw, client_message_raw, client_status_raw)
             
             return response_server
         else:
@@ -57,7 +58,7 @@ class aeye_print_log_Viewsets(viewsets.ModelViewSet):
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
-def request_print_log(message_client : str, name_client : str)->Response:
+def request_print_log(message_client : str, name_client : str, client_status_raw : str)->Response:
     
     if settings.DEBUG:
         message="Request Print Log to : {}{}".format()
@@ -68,7 +69,8 @@ def request_print_log(message_client : str, name_client : str)->Response:
         'whoami'             : i_am_mw_pl,
         'message'            : message,
         'client_name_raw'    : name_client,
-        'client_message_raw' : message_client
+        'client_message_raw' : message_client,
+        'client_status_raw'  : client_status_raw
     }
 
     url='{}{}'.format(server_url, hal_print_log)

@@ -6,4 +6,4 @@ class aeye_mno_serializers(serializers.ModelSerializer):
     
     class Meta:
         model = aeye_mno_models
-        fields = ['whoami', 'image', 'message']
+        fields = ['whoami', 'message', 'operation', 'status']

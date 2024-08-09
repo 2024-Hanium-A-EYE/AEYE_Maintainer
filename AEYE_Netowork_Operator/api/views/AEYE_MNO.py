@@ -26,8 +26,8 @@ def print_log(status, whoami, api, message) :
               "\n-----------------------------------------")
 
 server_url    = '127.0.0.1:2000/'
-print_log_url = '/mw/print-log/'
-save_log_url  = '/mw/save-log/'
+mw_print_log = '/mw/print-log/'
+mw_save_log  = '/mw/save-log/'
 i_am_api_ano = 'Maintainer API - MNO'
 
 class aeye_mno_Viewsets(viewsets.ModelViewSet):
@@ -41,10 +41,11 @@ class aeye_mno_Viewsets(viewsets.ModelViewSet):
             i_am_client      = serializer.validated_data.get('whoami')
             operation_client = serializer.validated_data.get('operation')
             message_client   = serializer.validated_data.get('message')
+            status_client    = serializer.validated_data.get('status')
             name_client      = i_am_client
 
             if operation_client=='print_log':
-                response_server = aeye_print_log(message_client, name_client)
+                response_server = aeye_print_log(message_client, name_client, status_client)
 
                 if response_server.status_code==200:
                     response_server = aeye_save_log(message_client, name_client)
@@ -73,14 +74,21 @@ class aeye_mno_Viewsets(viewsets.ModelViewSet):
             return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
-def aeye_print_log(message_client : str, name_client : str)->Response:
-    
+def aeye_print_log(message_client : str, name_client : str, status_client : str)->Response:
+    message="Request Print Log"
     data={
-        'whoami'      : i_am_api_ano,
-        'message'     : message_client,
-        'name_client' : name_client
+        'whoami'             : i_am_api_ano,
+        'message'            : message,
+        'client_name_raw'    : name_client,
+        'client_message_raw' : message_client,
+        'client_status_raw'  : status_client
     }
-    url='{}{}'.format(server_url, print_log_url)
+    url='{}{}'.format(server_url, mw_print_log)
+
+    if settings.DEBUG:
+        message="Send Data to : {}{}".format(server_url, mw_print_log)
+        print_log('active', i_am_api_ano,i_am_api_ano, message)
+
     response_print_log=requests.post(url, data=data)
     
     if response_print_log.statu_code==200:
@@ -94,7 +102,7 @@ def aeye_print_log(message_client : str, name_client : str)->Response:
 
         return response_print_log
     else:
-        message="Failed to Received Data from : {}{}".fromat(server_url, print_log_url)
+        message="Failed to Received Data from : {}{}".fromat(server_url, mw_print_log)
         data={
             'whoami' : i_am_api_ano,
             'message': message
@@ -107,7 +115,7 @@ def aeye_save_log(message_client : str, name_client : str)->Response:
         'message'     : message_client,
         'name_client' : name_client
     }
-    url='{}{}'.format(server_url, print_log_url)
+    url='{}{}'.format(server_url, mw_save_log)
     response_save_log=requests.post(url, data=data)
     
     if response_save_log.statu_code==200:

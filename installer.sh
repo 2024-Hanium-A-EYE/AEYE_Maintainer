@@ -160,7 +160,7 @@ install() {
           "runtimeArgs": []
         }
       }
-    }
+    }'
     sudo systemctl restart docker
 
     cd Docker

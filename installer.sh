@@ -116,7 +116,7 @@ install_nvidia_docker() {
 install() {
   if [ $install_status_vel -eq 0 ]; then
     echo -e "${BLUE}[1/$total_progress] ${NC}Install dependencies..."
-    install_dependencies
+    #install_dependencies
   else
     echo -e "${RED}[1/$total_progress] ${NC}Failed to install dependencies due to install_status_vel = 1."
   fi

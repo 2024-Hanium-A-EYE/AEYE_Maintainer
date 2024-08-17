@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  AEYE-NetOper:
+    image: aeye_network_operator:1.0
+    container_name: network_operator_container
+    build:
+      context: ..
+      dockerfile: Docker/AEYE_Network_Operator/Dockerfile
+    ports:
+    - "2000:2000"
+    volumes:  
+    - ../AEYE_Network_Operator/:/app/
+    tty: true
+    stdin_open: true
+    networks:
+      - ai_network
+    command: python manage.py runserver 0.0.0.0:2000

@@ -30,7 +30,7 @@ RUN pip install -r dependencies.txt
 # Copy DIR
 WORKDIR /app/
 
-COPY /AEYE_Network_Operator/ /app/
+COPY /AEYE_Netowork_Operator/ /app/
 
 #############################################################
 # Result

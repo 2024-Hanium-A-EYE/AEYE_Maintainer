@@ -10,7 +10,7 @@ services:
     ports:
     - "2000:2000"
     volumes:  
-    - ../AEYE_Network_Operator/:/app/
+    - ../AEYE_Netowork_Operator/:/app/
     tty: true
     stdin_open: true
     networks:

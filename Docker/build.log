@@ -1,2 +1,46 @@
-time="2024-08-17T15:19:44Z" level=warning msg="/home/ubuntu/AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-resolve : lstat /home/ubuntu/AI/Docker/AEYE_Network_Operator: no such file or directory
+time="2024-08-17T15:21:33Z" level=warning msg="/home/ubuntu/AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+#0 building with "default" instance using docker driver
+
+#1 [AEYE-NetOper internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.04kB done
+#1 DONE 0.0s
+
+#2 [AEYE-NetOper internal] load metadata for docker.io/library/python:3.8-slim
+#2 DONE 0.6s
+
+#3 [AEYE-NetOper internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [AEYE-NetOper internal] load build context
+#4 transferring context: 634B done
+#4 DONE 0.0s
+
+#5 [AEYE-NetOper 4/8] RUN apt-get update && apt-get install -y     build-essential     libpq-dev     && apt-get clean     && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [AEYE-NetOper 6/8] RUN pip install -r dependencies.txt
+#6 CACHED
+
+#7 [AEYE-NetOper 5/8] RUN pip install --upgrade pip
+#7 CACHED
+
+#8 [AEYE-NetOper 3/8] COPY /Docker/Network_Operator/dependencies.txt /app/
+#8 CACHED
+
+#9 [AEYE-NetOper 7/8] WORKDIR /app/
+#9 CACHED
+
+#10 [AEYE-NetOper 2/8] WORKDIR /app
+#10 CACHED
+
+#11 [AEYE-NetOper 8/8] COPY /AEYE_Network_Operator/ /app/
+#11 ERROR: failed to calculate checksum of ref acdf7d62-4a7d-41c8-8330-a6cf78788e73::slz638bdpoks2bjbl91nakvdr: "/AEYE_Network_Operator": not found
+
+#12 [AEYE-NetOper 1/8] FROM docker.io/library/python:3.8-slim@sha256:f8b4609a66cdaa133fa57e2ca8e2f03de2ebb44ffefb4c0b8b2de782aefca4a1
+#12 resolve docker.io/library/python:3.8-slim@sha256:f8b4609a66cdaa133fa57e2ca8e2f03de2ebb44ffefb4c0b8b2de782aefca4a1 0.0s done
+#12 DONE 0.0s
+------
+ > [AEYE-NetOper 8/8] COPY /AEYE_Network_Operator/ /app/:
+------
+failed to solve: failed to compute cache key: failed to calculate checksum of ref acdf7d62-4a7d-41c8-8330-a6cf78788e73::slz638bdpoks2bjbl91nakvdr: "/AEYE_Network_Operator": not found

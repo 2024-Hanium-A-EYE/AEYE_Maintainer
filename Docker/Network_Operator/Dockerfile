@@ -11,7 +11,7 @@ FROM python:3.8-slim
 #############################################################
 # Install Dependencies
 WORKDIR /app
-COPY /Docker/AEYE_Network_Operator/dependencies.txt /app/
+COPY /Docker/Network_Operator/dependencies.txt /app/
 
 RUN apt-get update && apt-get install -y \
     build-essential \

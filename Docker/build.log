@@ -1,2 +1,2 @@
-time="2024-08-17T15:18:10Z" level=warning msg="/home/ubuntu/AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-service "AEYE-NetOper" refers to undefined network ai_network: invalid compose project
+time="2024-08-17T15:19:44Z" level=warning msg="/home/ubuntu/AI/Docker/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+resolve : lstat /home/ubuntu/AI/Docker/AEYE_Network_Operator: no such file or directory
